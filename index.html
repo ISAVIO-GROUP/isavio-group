@@ -934,18 +934,13 @@
   }
 
   let entered = false;
-  function enterApp(){
+function enterApp(){
     if(entered) return;
     entered = true;
-    clearTimeout(autoAdvance);
     const welcome = document.getElementById('screen-welcome');
     welcome.classList.add('leaving');
     setTimeout(() => goTo('select'), 650);
-  }
-
-  // auto-advance welcome screen if left untouched
-  let autoAdvance = setTimeout(enterApp, 4200);
-
+}
   function lockedTap(el, name){
     el.classList.remove('shake');
     void el.offsetWidth;
