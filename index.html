@@ -426,6 +426,41 @@
     color:var(--muted-2);
     font-weight:300;
   }
+
+  /* ===== Aao Samjho: live, clickable card ===== */
+  .card-locked.card-live{
+    cursor:pointer;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .card-locked.card-live::before{
+    background:linear-gradient(0deg, rgba(10,10,12,0.9) 10%, rgba(10,10,12,0.4) 60%, rgba(10,10,12,0.1) 100%);
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+  .card-locked.card-live:hover{
+    transform:translateY(-3px);
+    border-color:var(--gold-dim);
+    box-shadow:0 12px 34px rgba(0,0,0,0.45);
+  }
+  .card-live h3{color:#fff;}
+  .card-live .lock-badge.live-badge{
+    color:var(--ink);
+    background:var(--green);
+    border-color:transparent;
+    font-weight:700;
+  }
+  .live-dot{width:5px;height:5px;border-radius:50%;background:var(--ink);display:inline-block;}
+  .live-arrow{
+    width:30px;height:30px;border-radius:50%;
+    border:1px solid rgba(244,239,228,0.35);
+    display:flex;align-items:center;justify-content:center;
+    transition:background .3s, border-color .3s;
+  }
+  .live-arrow svg{width:13px;height:13px;stroke:#fff;}
+  .card-live:hover .live-arrow{background:var(--gold);border-color:var(--gold);}
+  .card-live:hover .live-arrow svg{stroke:var(--ink);}
   .card-locked.shake{animation:shake .4s;}
   @keyframes shake{
     10%,90%{transform:translateX(-2px);}
@@ -784,7 +819,7 @@
     <div class="select-hero">
       <span class="eyebrow">Our Ventures</span>
       <h1>Four ventures, <em>one studio.</em></h1>
-      <p>Isavio Group is the parent studio behind four independent ventures. One is live today — the rest are being built with the same care, and will open here as they're ready.</p>
+      <p>Isavio Group is the parent studio behind four independent ventures. Two are live today — the rest are being built with the same care, and will open here as they're ready.</p>
     </div>
 
     <div class="ventures">
@@ -802,15 +837,16 @@
       </div>
 
       <div class="locked-row">
-        <div class="card card-locked card-samjho" onclick="lockedTap(this,'Aao Samjho AI')">
+        <a class="card card-locked card-samjho card-live" href="https://website-aao-samjho-ai.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Aao Samjho AI">
           <div class="card-body">
             <div class="lock-row">
-              <span class="lock-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 018 0v3"/></svg> In development</span>
+              <span class="lock-badge live-badge"><span class="live-dot"></span> Live now</span>
+              <span class="live-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
             </div>
             <h3 class="serif">Aao Samjho AI</h3>
-            "पहले समझो, फिर लिखो" Pehle Samjho, Fir likho</span>
+            <span class="tagline">"पहले समझो, फिर लिखो" — Pehle Samjho, Fir Likho</span>
           </div>
-        </div>
+        </a>
 
         <div class="card card-locked card-aoreka" onclick="lockedTap(this,'Aoreka AI')">
           <div class="card-body">
@@ -836,7 +872,7 @@
 
     <div class="select-footer">
       <span>© 2026 Isavio Group</span>
-      <span>1 of 4 ventures live</span>
+      <span>2 of 4 ventures live</span>
     </div>
   </section>
 
